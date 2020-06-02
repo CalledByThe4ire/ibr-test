@@ -1,0 +1,12 @@
+mixin slider(data)
+	+b('div').slider(class='swiper-container')&attributes(attributes)
+		+e('ul').inner(class='swiper-wrapper')
+			each value, index in data
+				+e.item( class='swiper-slide', data-caption= caption)
+					+e.link(href='#')
+						+e('figure').figure
+							picture
+								source(media='(min-width: 769px)', srcset=`%=static=%img/content/slider__image-md--${index + 1}.jpg, %=static=%img/content/slider__image-md--${index + 1}@2x.jpg 2x`)
+								+e('img').image(src=`%=static=%img/content/slider__image-sm--${index + 1}.jpg`, srcset=`%=static=%img/content/slider__image-sm--${index + 1}.jpg 2x`, alt=`${value}`)
+							+e('figcaption').caption !{value}
+		div.swiper-pagination

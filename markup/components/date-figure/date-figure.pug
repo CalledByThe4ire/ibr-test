@@ -1,0 +1,8 @@
+include ../icon/icon.pug
+
+mixin date-figure(data)
+	+b('div').date-figure&attributes(attributes)
+		+e('div').inner
+			+e('span').day 12
+			+icon('media-play-symbol', 5, 5)
+		+e('span').month апреля

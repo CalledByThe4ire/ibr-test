@@ -1,0 +1,8 @@
+include ../rating/rating.pug
+include ../form/form.pug
+
+mixin feedback(data)
+	+b('div').feedback&attributes(attributes)
+		+e('div').container
+			+rating(rating)(class='__rating')
+			+form(form)(class='__form')

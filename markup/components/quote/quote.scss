@@ -1,0 +1,130 @@
+.quote {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex-basis: 100%;
+  min-width: $min-width;
+  max-width: $max-width;
+  margin: auto;
+
+  &__container {
+    @include padding-x($offset--sm);
+
+    margin-bottom: 50px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: $offset--md;
+      display: none;
+      width: calc(100% - (#{$offset--md} * 2 - #{$grid-gutter-width / 2}));
+      height: 1px;
+      background-color: #454a52;
+    }
+
+    @include media-breakpoint-up(md) {
+      @include make-row();
+      @include padding-x($offset--md);
+
+      &::before {
+        display: block;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    font-family: Consolas, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 400;
+    color: #000;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-ready();
+      @include make-col(12);
+
+      font-size: 28px;
+      margin-top: 60px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__text {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    padding-left: 50px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    font-style: italic;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-ready();
+      @include make-col(12);
+
+      font-size: 18px;
+      line-height: 24px;
+      padding-left: percentage($number: 1/12);
+      margin-bottom: 25px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 0;
+      display: flex;
+      width: 34px;
+      height: 34px;
+      background-image: url('%=static=%assets/quote/quotation-mark.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      @include media-breakpoint-up(md) {
+        left: #{$grid-gutter-width / 2};
+      }
+    }
+  }
+
+  &__author {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    margin-left: 50px;
+    padding-left: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    font-style: italic;
+    color: #777;
+    transition: all 0.5s;
+
+    &::before {
+      content: '—';
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    @include media-breakpoint-up(md) {
+      @include make-col-ready();
+      @include make-col(11);
+      @include make-col-offset(1);
+
+      font-size: 16px;
+      line-height: 24px;
+
+      & span {
+        display: flex;
+        padding-left: 5px;
+      }
+    }
+  }
+}

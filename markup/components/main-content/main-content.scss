@@ -1,0 +1,12 @@
+.main-content {
+  &__container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding-top: 25px;
+
+    @include media-breakpoint-up(md) {
+      padding-top: 45px;
+    }
+  }
+}

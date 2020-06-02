@@ -1,3 +1,7 @@
 // Size
 $min-width: map-get($grid-breakpoints, sm);
 $max-width: 1024px;
+
+// Offsets
+$offset--sm: 20px;
+$offset--md: 128px;

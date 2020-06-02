@@ -1,3 +1,31 @@
 .swiper {
+  $swiper: &;
+
   display: block;
+
+  &-pagination {
+    @include media-breakpoint-up(md) {
+      display: none;
+    }
+  }
+
+  &-container-horizontal > {
+    #{$swiper}-pagination {
+      &-bullets {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #{$swiper}-pagination-bullet {
+          margin: 0 10px;
+        }
+
+        #{$swiper}-pagination-bullet-active {
+          width: 14px;
+          height: 14px;
+          background-color: $primary;
+        }
+      }
+    }
+  }
 }

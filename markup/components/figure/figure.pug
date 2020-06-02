@@ -1,0 +1,8 @@
+include ../date-figure/date-figure.pug
+
+mixin figure({ figCaption })
+	+b('figure').figure(class='simplebar', data-simplebar= true)&attributes(attributes)
+		+e('figcaption').caption= figCaption
+		+e('div').inner
+			+date-figure(class='__date')
+			+e.image(src='%=static=%img/assets/figure/books.jpg', width='738', height='300', alt='books')

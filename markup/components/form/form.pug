@@ -1,0 +1,53 @@
+include ../icon/icon.pug
+
+mixin form(data)
+	+b('form').form&attributes(attributes)
+		- const { legend, fields } = data;
+		- const filtered = fields.filter(field => field.type === 'input');
+		+e('fieldset').fieldset
+			+e('legend').legend !{legend}
+			+e('div').row
+				each input in filtered
+					case input.modifier
+						when 'select'
+							+e('div').inner(tabindex=0)
+								+e('div').field
+									+e('input').input(
+										type='text',
+										value=`${input.text}`,
+										maxlength=40,
+										tabindex=-1
+									)
+									+icon('arrow', 10, 10)
+								+e('ul').options-list.list-options__(class='--hidden')
+									- const { list: options } = input;
+									each option, index in options
+										+e('li').item
+											+e.link(href='#') !{option}
+
+						when 'text'
+							+e('input').input(
+									type='text',
+									placeholder=`${input.text}`,
+									maxlength=40,
+							)
+
+						when 'email'
+							+e('input').input(
+									type='email',
+									placeholder=`${input.text}`,
+									maxlength=40,
+							)
+			each field in fields
+				case field.modifier
+					when 'textarea'
+						+e('textarea').textarea(
+							placeholder=`${field.text}`,
+							)
+
+					when 'submit'
+						+e('input').input(
+								type='submit',
+								value=`${field.text}`,
+						)
+

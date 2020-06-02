@@ -1,0 +1,7 @@
+include ../slider/slider.pug
+
+mixin posts({title})
+	+b('section').posts&attributes(attributes)
+		+e('div').container
+			+e('h2').title= title
+			+slider(slider)

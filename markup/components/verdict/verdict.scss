@@ -1,0 +1,60 @@
+.verdict {
+  display: flex;
+  flex-flow: column wrap;
+  min-width: $min-width;
+  max-width: $max-width;
+  margin: auto;
+
+  &__container {
+    @include padding-x($offset--sm);
+
+    padding-top: 30px;
+    padding-bottom: 35px;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      @include padding-x($offset--md);
+
+      padding-top: 50px;
+      padding-bottom: 70px;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 15px;
+    padding: 0;
+    font-family: Consolas, Arial, sans-serif;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 400;
+    color: #000;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-ready();
+      @include make-col(12);
+
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #202326;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-ready();
+      @include make-col(12);
+
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}

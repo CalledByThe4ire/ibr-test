@@ -10,7 +10,16 @@ document.addEventListener(`DOMContentLoaded`, () => {
   const enableSlider = () => {
     slider = new Swiper(`.swiper-container`, {
       loop: true,
-      speed: 500
+      speed: 500,
+      spaceBetween: 50,
+      autoplay: {
+        delay: 3000
+      },
+      pagination: {
+        el: `.swiper-pagination`,
+        type: `bullets`,
+        clickable: true
+      }
     });
   };
 

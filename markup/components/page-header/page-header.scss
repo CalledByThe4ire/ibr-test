@@ -1,0 +1,65 @@
+.page-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+  min-width: $min-width;
+  max-width: $max-width;
+  margin: auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: $offset--sm;
+    display: block;
+    width: calc(100% - 40px);
+    height: 1px;
+    background-color: #454a52;
+    opacity: 0.2;
+    transform: translateY(-50%);
+
+    @include media-breakpoint-up(md) {
+      left: $offset--md + ($grid-gutter-width / 2);
+      width: calc(100% - (#{$offset--md} * 2 + (#{$grid-gutter-width})));
+    }
+  }
+
+  &__container {
+    @include padding-x($offset--sm);
+
+    @include media-breakpoint-up(md) {
+      @include padding-x($offset--md);
+      @include make-row();
+    }
+  }
+
+  &__title {
+    z-index: 5;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+
+    @include padding-x(20px);
+
+    font-family: 'Consolas', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 2;
+    color: $primary;
+    text-align: center;
+    background-color: $body-bg;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      @include make-col-ready();
+      @include make-col(12);
+
+      font-size: 48px;
+      flex: 0 0 auto;
+      width: auto;
+    }
+  }
+}

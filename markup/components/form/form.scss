@@ -1,0 +1,234 @@
+.form {
+  $form: &;
+
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+
+  &__fieldset {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    border: 0;
+
+    @include media-breakpoint-up(md) {
+      @include margin-x($grid-gutter-width / 2);
+    }
+  }
+
+  &__row {
+    display: flex;
+    flex-flow: column wrap;
+
+    @include media-breakpoint-up(md) {
+      flex-flow: row wrap;
+      justify-content: space-between;
+
+      > * {
+        width: calc(100% / 3 - #{$grid-gutter-width});
+      }
+    }
+  }
+
+  &__legend {
+    display: table;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 15px;
+    font-family: 'Consolas', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    color: #202326;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      font-size: 18px;
+    }
+  }
+
+  &__inner,
+  &__field,
+  &__input,
+  &__textarea {
+    display: flex;
+
+    @include media-breakpoint-down(sm) {
+      width: auto;
+    }
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    flex-flow: row wrap;
+    transition: all 0.5s;
+
+    .icon {
+      outline: none;
+    }
+
+    #{$form}__input {
+      &,
+      &:focus,
+      &:active {
+        border: none;
+      }
+
+      @include media-breakpoint-up(md) {
+        @include text-truncate();
+      }
+    }
+
+    &:focus {
+      outline: none;
+
+      #{$form}__field {
+        border: 1px solid #222;
+      }
+    }
+
+    &--open {
+      #{$form}__field {
+        border: 1px solid #222;
+      }
+
+      #{$form}__options-list {
+        position: absolute;
+        top: 100%;
+        right: 0;
+
+        @include media-breakpoint-up(md) {
+          top: calc(100% - 10px);
+        }
+      }
+
+      .icon {
+        @include icon-colors() {
+          --fill: #222;
+        }
+
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__field {
+    flex-flow: row nowrap;
+    flex-grow: 1;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+
+    @include padding-y(13px);
+
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    transition: all 0.5s;
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: auto;
+    }
+
+    #{$form}__input {
+      width: 100%;
+      padding: initial;
+      padding-right: 15px;
+      color: #777;
+      background-color: transparent;
+      border: none;
+      border-radius: initial;
+      transition: all 0.5s;
+
+      &:not(:last-child) {
+        margin-bottom: initial;
+      }
+    }
+
+    .icon {
+      transition: all 0.5s;
+    }
+  }
+
+  &__textarea {
+    width: 100%;
+    min-height: 120px;
+
+    @include media-breakpoint-up(md) {
+      min-height: 100px;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    @include padding-x(20px);
+    @include padding-y(13px);
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    transition: all 0.5s;
+
+    &:not(:last-child) {
+      margin-bottom: 15px;
+
+      @include media-breakpoint-up(md) {
+        margin-bottom: 20px;
+      }
+    }
+
+    &:placeholder {
+      color: #777;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus,
+    &:active {
+      border: 1px solid #222;
+    }
+  }
+
+  &__input[type='submit'] {
+    justify-content: center;
+    align-items: center;
+    font-family: Consolas, Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: $primary;
+    border: 2px solid $primary;
+    color: #fff;
+    cursor: pointer;
+
+    @include media-breakpoint-up(md) {
+      width: calc(100% / 3 - #{$grid-gutter-width});
+    }
+
+    &:hover {
+      background-color: darken($color: $primary, $amount: 10%);
+      border: 2px solid darken($color: $primary, $amount: 10%);
+    }
+
+    &:focus,
+    &:active {
+      background-color: #fff;
+      color: #202326;
+    }
+  }
+}
