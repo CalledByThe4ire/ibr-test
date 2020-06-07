@@ -1,7 +1,0 @@
-mixin quote({ title, text, author })
-	+b('section').quote&attributes(attributes)
-		+e('div').container
-			+e('h2').title !{title}
-			+e('blockquote').text !{text}
-			+e('cite').author
-				span !{author}
